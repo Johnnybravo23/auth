@@ -7,7 +7,7 @@ export class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                 <Link to="/" className="navbar-brand">
-                    <img src={logo} alt="monkey" />
+                    <img src={logo} alt="monkey" className="logo1" />
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span className="navbar-toggler-icon"></span>

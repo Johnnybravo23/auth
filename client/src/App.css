@@ -31,6 +31,7 @@ body {
 /*----- starting navigation bar ---- */
 .navbar {
     text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: .9rem;
     letter-spacing: .1rem;
@@ -49,6 +50,18 @@ body {
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:hover {
     color: var(--mainYellow) !important;
+}
+
+.logo1 {
+  animation: scaleLogo 2s infinite alternate;
+}
+@keyframes scaleLogo {
+  to{
+      transform: scale(1.2);
+  }
+}
+* {
+  scroll-behavior: smooth;
 }
 /*----- ending navigation bar ---- */
 
