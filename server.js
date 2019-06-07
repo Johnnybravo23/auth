@@ -18,6 +18,7 @@ if(process.env.NODE_ENV === 'production') {
   });
 }
 
+// initilization
 const app = express();
 
 // Body parser middleware
