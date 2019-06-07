@@ -13,7 +13,13 @@
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+img {
+  width: 100%;
 }
 
 body {
@@ -46,7 +52,44 @@ body {
 }
 /*----- ending navigation bar ---- */
 
-
+/* Landing Page */
+.hero {
+  min-height: calc(100vh - 90px);
+  background: url("./img/landing.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  padding: 2rem;
+}
+.banner-title {
+  font-size: 3.4rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 3rem;
+}
+.banner-btn {
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  font-size: 1rem;
+  background: var(--mainBlue);
+  color: var(--mainBlack);
+  border: 1px solid var(--primaryColor);
+  transition: var(--mainTransition);
+  cursor: pointer;
+}
+.banner-btn:hover {
+  background: transparent;
+  color: var(--mainBlack);
+}
+a {
+  text-decoration: none;
+}
 /*----- starting login page ---- */
 .sign-up-form {
   width: 300px;

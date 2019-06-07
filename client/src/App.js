@@ -13,6 +13,7 @@ import './App.css';
 
 // importing the Components
 import Navbar from './components/Navbar';
+import Landing from './components/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Forgot from './components/auth/Forgot';
@@ -44,6 +45,7 @@ function App() {
         <Router>
             <div className="App">
                 <Navbar />
+                <Route exact path="/" component={Landing} />
                 <div className="container">
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
