@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
@@ -17,6 +17,10 @@ import Landing from './components/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Forgot from './components/auth/Forgot';
+import Dashboard from './components/Dashboard';
+
+// importing the private route
+import PrivateRoute from './components/common/PrivateRoute';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -50,6 +54,9 @@ function App() {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/forgot-pass" component={Forgot} />
+                  <Switch>
+                        <PrivateRoute exact path="/dashboard" component={ Dashboard } />
+                    </Switch>
                 </div>
           </div>
         </Router>
