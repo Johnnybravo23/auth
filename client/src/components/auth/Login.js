@@ -48,7 +48,6 @@ class Login extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
   render() {
     const { errors } = this.state;
 
@@ -75,7 +74,7 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input type="submit" className="btn btn-info btn-block mt-4" value="Login" />
                 <h6 className="lead text-center"><Link to="/forgot-pass">Forgot Password?</Link></h6>
                 <small className="form-text text-muted text-center">Dont have an account? click <Link to="/register">here</Link></small>
               </form>
