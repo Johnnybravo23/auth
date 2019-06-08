@@ -1,26 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
+import { clearCurrentProfile } from './actions/profileActions';
 
-// redux stuff
 import { Provider } from 'react-redux';
 import store from './store';
 
-// importing the css
-import './App.css';
+import PrivateRoute from './components/common/PrivateRoute';
 
-// importing the Components
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Forgot from './components/auth/Forgot';
 import Dashboard from './components/Dashboard';
 
-// importing the private route
-import PrivateRoute from './components/common/PrivateRoute';
+
+import './App.css';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -36,32 +33,33 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
-    // TODO: Clear current Profile
-
+    // Clear current Profile
+    store.dispatch(clearCurrentProfile());
     // Redirect to login
     window.location.href = '/login';
   }
 }
 
-function App() {
-  return (
-    <Provider store={store}>
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
         <Router>
-            <div className="App">
-                <Navbar />
-                <Route exact path="/" component={Landing} />
-                <div className="container">
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/forgot-pass" component={Forgot} />
-                  <Switch>
-                        <PrivateRoute exact path="/dashboard" component={ Dashboard } />
-                    </Switch>
-                </div>
+          <div className="App">
+            <Navbar />
+            <Route exact path="/" component={Landing} />
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+            </div>
           </div>
         </Router>
-    </Provider>
-  );
+      </Provider>
+    );
+  }
 }
 
 export default App;
